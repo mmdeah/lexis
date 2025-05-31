@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Para Lexas Zoé 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom right, #fbd3e9, #bb377d);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px 20px;
+      margin: 40px auto;
+      border-radius: 25px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      margin-bottom: 10px;
+      color: #fffafc;
+    }
+
+    .heart {
+      font-size: 2em;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+
+    .poem {
+      font-size: 1.2em;
+      line-height: 1.8;
+      margin: 30px 0;
+      color: #fff;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #ffeaf6;
+    }
+
+    /* Corazones flotantes */
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .hearts span {
+      position: absolute;
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url('https://emojiapi.dev/api/v1/2764/64.png') no-repeat center/contain;
+      animation: float 10s linear infinite;
+      opacity: 0.4;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.8);
+        opacity: 0.2;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Posiciones aleatorias */
+    .hearts span:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .hearts span:nth-child(2) { left: 25%; animation-delay: 2s; }
+    .hearts span:nth-child(3) { left: 50%; animation-delay: 4s; }
+    .hearts span:nth-child(4) { left: 75%; animation-delay: 6s; }
+    .hearts span:nth-child(5) { left: 90%; animation-delay: 1s; }
+  </style>
+</head>
+<body>
+  <div class="hearts">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="container">
+    <h1>Para Lexas Zoé</h1>
+    <div class="heart">💗</div>
+
+    <div class="poem">
+      Eres la luz en mis días más grises,<br>
+      mi paz en medio del ruido,<br>
+      tus ojos son como dos amaneceres<br>
+      que me enseñan que el amor ha nacido.<br><br>
+
+      Lexas Zoé, tu nombre es poesía,<br>
+      cada letra una melodía,<br>
+      y en este rincón del mundo digital,<br>
+      te escribo mi amor inmortal.
+    </div>
+
+    <footer>Con cariño eterno 💌</footer>
+  </div>
+</body>
+</html>
