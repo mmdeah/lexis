@@ -66,7 +66,7 @@
       color: #ffeaf6;
     }
 
-    /* Corazones rebotando */
+    /* Corazones animados */
     .love-animation {
       margin-top: 40px;
       position: relative;
@@ -113,94 +113,77 @@
       50% { bottom: 100px; transform: scale(1.2) rotate(-45deg); opacity: 1; }
     }
 
-    /* 🐓 Gallo animado */
-   .rooster-container {
-  margin-top: 60px;
-  height: 160px;
-  position: relative;
-  overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-}
+    /* Gallo SVG animado */
+    .rooster-svg-container {
+      margin-top: 60px;
+      height: 100px;
+      position: relative;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+    }
 
-.rooster {
-  position: absolute;
-  bottom: 10px;
-  left: -150px;
-  animation: walk 12s linear infinite;
-  display: flex;
-  align-items: flex-end;
-  transform: scale(1.5);
-}
+    .rooster-svg {
+      width: 64px;
+      height: 64px;
+      position: absolute;
+      bottom: 10px;
+      left: -70px;
+      cursor: pointer;
+      animation: svg-walk 10s linear infinite;
+    }
 
-@keyframes walk {
-  0% { left: -150px; }
-  100% { left: 100%; }
-}
+    @keyframes svg-walk {
+      0% { left: -70px; }
+      100% { left: 100%; }
+    }
 
-.body {
-  width: 60px;
-  height: 40px;
-  background: brown;
-  border-radius: 50% 50% 40% 40%;
-  position: relative;
-  border: 2px solid #000;
-}
+    /* Texto flotante */
+    .kikiriki-text {
+      position: absolute;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #fffc;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      pointer-events: none;
+      animation: none;
+    }
 
-.head {
-  width: 30px;
-  height: 30px;
-  background: #f4c542;
-  border-radius: 50%;
-  position: absolute;
-  top: -25px;
-  left: -15px;
-  border: 2px solid #000;
-}
+    .kikiriki-text.show {
+      animation: flyUp 1s ease-out forwards;
+    }
 
-.beak {
-  width: 12px;
-  height: 12px;
-  background: orange;
-  clip-path: polygon(0 50%, 100% 0, 100% 100%);
-  position: absolute;
-  right: -12px;
-  top: 10px;
-  border: 1px solid #000;
-}
+    @keyframes flyUp {
+      0% { opacity: 1; transform: translate(-50%, 0); }
+      100% { opacity: 0; transform: translate(-50%, -60px); }
+    }
 
-.comb {
-  width: 10px;
-  height: 10px;
-  background: red;
-  border-radius: 50%;
-  position: absolute;
-  top: -8px;
-  left: 8px;
-  border: 1px solid #000;
-}
+    /* Pétalos de rosa */
+    .petal {
+      position: fixed;
+      top: -10px;
+      width: 20px;
+      height: 20px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/3/3c/Rose_Petal.png') no-repeat center/contain;
+      pointer-events: none;
+      opacity: 0.8;
+      z-index: 0;
+      animation: fall 8s linear infinite;
+    }
 
-.eye {
-  width: 5px;
-  height: 5px;
-  background: black;
-  border-radius: 50%;
-  position: absolute;
-  top: 8px;
-  left: 10px;
-}
-
-.tail {
-  width: 20px;
-  height: 20px;
-  background: green;
-  border-radius: 50%;
-  position: absolute;
-  bottom: 25px;
-  right: -10px;
-  border: 1px solid #000;
-}
-
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -230,23 +213,55 @@
       <div class="heart"></div>
     </div>
 
-    <!-- Gallo animado -->
-    <!-- Gallo animado -->
-<div class="rooster-container">
-  <div class="rooster">
-    <div class="body"></div>
-    <div class="head">
-      <div class="beak"></div>
-      <div class="comb"></div>
-      <div class="eye"></div>
+    <!-- Gallo SVG animado -->
+    <div class="rooster-svg-container">
+      <svg viewBox="0 0 64 64" class="rooster-svg">
+        <path fill="#d2691e" d="M32 12c-4 0-8 3-8 7 0 2 1 4 3 5-1 0-3 2-3 4 0 2 2 4 4 4s3-1 3-1 1 1 3 1 4-2 4-4c0-2-2-4-3-4 2-1 3-3 3-5 0-4-4-7-8-7z"/>
+        <circle cx="35" cy="10" r="3" fill="red" />
+        <circle cx="29" cy="10" r="3" fill="red" />
+        <circle cx="32" cy="8" r="3" fill="red" />
+        <circle cx="32" cy="19" r="2" fill="black"/>
+        <polygon points="36,19 40,21 36,23" fill="orange"/>
+        <path fill="green" d="M24 30c-5 4-10 10-5 18 3 5 12 5 17 2 6-4 6-12 3-18l-2 2c-1 2-3 2-5 2s-4 0-5-2l-3-2z"/>
+      </svg>
+      <div class="kikiriki-text" id="kikirikiText">¡Kikirikí para Lexas!</div>
     </div>
-    <div class="tail"></div>
-  </div>
-</div>
-
 
     <footer>Con cariño eterno 💌</footer>
   </div>
+
+  <!-- Audio del kikirikí -->
+  <audio id="roosterSound" src="https://www.soundjay.com/animal/rooster-2.mp3"></audio>
+
+  <!-- Script para sonido, texto y pétalos -->
+  <script>
+    const rooster = document.querySelector('.rooster-svg');
+    const sound = document.getElementById('roosterSound');
+    const text = document.getElementById('kikirikiText');
+
+    rooster.addEventListener('click', () => {
+      sound.currentTime = 0;
+      sound.play();
+      text.classList.remove('show');
+      void text.offsetWidth;
+      text.classList.add('show');
+    });
+
+    // Crear pétalos aleatorios
+    function createPetal() {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      petal.style.left = Math.random() * 100 + "vw";
+      petal.style.animationDuration = (5 + Math.random() * 5) + "s";
+      document.body.appendChild(petal);
+
+      setTimeout(() => {
+        petal.remove();
+      }, 10000);
+    }
+
+    setInterval(createPetal, 500);
+  </script>
 
 </body>
 </html>
