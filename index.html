@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Para Lexas Zoé 💖</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
@@ -31,6 +31,8 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       text-align: center;
       backdrop-filter: blur(8px);
+      z-index: 1;
+      position: relative;
     }
 
     h1 {
@@ -64,50 +66,74 @@
       color: #ffeaf6;
     }
 
-    /* Corazones flotantes */
-    .hearts {
+    .love-animation {
+      margin-top: 40px;
+      position: relative;
+      height: 150px;
+    }
+
+    .love-animation .heart {
       position: absolute;
-      top: 0;
+      width: 30px;
+      height: 30px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    .love-animation .heart::before,
+    .love-animation .heart::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .love-animation .heart::before {
+      top: -15px;
       left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 0;
     }
 
-    .hearts span {
-      position: absolute;
-      display: block;
-      width: 20px;
-      height: 20px;
-      background: url('https://emojiapi.dev/api/v1/2764/64.png') no-repeat center/contain;
-      animation: float 10s linear infinite;
-      opacity: 0.4;
+    .love-animation .heart::after {
+      left: 15px;
+      top: 0;
     }
 
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) scale(0.8);
-        opacity: 0.2;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1.2);
-        opacity: 0;
-      }
+    /* Múltiples corazones rebotando */
+    .love-animation .heart:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
     }
 
-    /* Posiciones aleatorias */
-    .hearts span:nth-child(1) { left: 10%; animation-delay: 0s; }
-    .hearts span:nth-child(2) { left: 25%; animation-delay: 2s; }
-    .hearts span:nth-child(3) { left: 50%; animation-delay: 4s; }
-    .hearts span:nth-child(4) { left: 75%; animation-delay: 6s; }
-    .hearts span:nth-child(5) { left: 90%; animation-delay: 1s; }
+    .love-animation .heart:nth-child(2) {
+      left: 30%;
+      animation-delay: 0.3s;
+    }
+
+    .love-animation .heart:nth-child(3) {
+      left: 50%;
+      animation-delay: 0.6s;
+    }
+
+    .love-animation .heart:nth-child(4) {
+      left: 70%;
+      animation-delay: 0.9s;
+    }
+
+    .love-animation .heart:nth-child(5) {
+      left: 85%;
+      animation-delay: 1.2s;
+    }
+
+    @keyframes bounce {
+      0%, 100% { bottom: 0; transform: scale(1) rotate(-45deg); opacity: 0.8; }
+      50% { bottom: 100px; transform: scale(1.2) rotate(-45deg); opacity: 1; }
+    }
   </style>
 </head>
 <body>
-  <div class="hearts">
-    <span></span><span></span><span></span><span></span><span></span>
-  </div>
 
   <div class="container">
     <h1>Para Lexas Zoé</h1>
@@ -125,7 +151,16 @@
       te escribo mi amor inmortal.
     </div>
 
+    <div class="love-animation">
+      <div class="heart"></div>
+      <div class="heart"></div>
+      <div class="heart"></div>
+      <div class="heart"></div>
+      <div class="heart"></div>
+    </div>
+
     <footer>Con cariño eterno 💌</footer>
   </div>
+
 </body>
 </html>
