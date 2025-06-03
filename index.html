@@ -114,84 +114,93 @@
     }
 
     /* 🐓 Gallo animado */
-    .rooster-container {
-      margin-top: 60px;
-      height: 120px;
-      position: relative;
-      overflow: hidden;
-    }
+   .rooster-container {
+  margin-top: 60px;
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
 
-    .rooster {
-      position: absolute;
-      bottom: 0;
-      left: -100px;
-      animation: walk 10s linear infinite;
-      display: flex;
-      align-items: flex-end;
-    }
+.rooster {
+  position: absolute;
+  bottom: 10px;
+  left: -150px;
+  animation: walk 12s linear infinite;
+  display: flex;
+  align-items: flex-end;
+  transform: scale(1.5);
+}
 
-    @keyframes walk {
-      0% { left: -100px; }
-      100% { left: 100%; }
-    }
+@keyframes walk {
+  0% { left: -150px; }
+  100% { left: 100%; }
+}
 
-    .body {
-      width: 60px;
-      height: 40px;
-      background: brown;
-      border-radius: 50% 50% 40% 40%;
-      position: relative;
-    }
+.body {
+  width: 60px;
+  height: 40px;
+  background: brown;
+  border-radius: 50% 50% 40% 40%;
+  position: relative;
+  border: 2px solid #000;
+}
 
-    .head {
-      width: 30px;
-      height: 30px;
-      background: #f4c542;
-      border-radius: 50%;
-      position: absolute;
-      top: -20px;
-      left: -10px;
-    }
+.head {
+  width: 30px;
+  height: 30px;
+  background: #f4c542;
+  border-radius: 50%;
+  position: absolute;
+  top: -25px;
+  left: -15px;
+  border: 2px solid #000;
+}
 
-    .beak {
-      width: 10px;
-      height: 10px;
-      background: orange;
-      clip-path: polygon(0 50%, 100% 0, 100% 100%);
-      position: absolute;
-      right: -10px;
-      top: 10px;
-    }
+.beak {
+  width: 12px;
+  height: 12px;
+  background: orange;
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  position: absolute;
+  right: -12px;
+  top: 10px;
+  border: 1px solid #000;
+}
 
-    .comb {
-      width: 10px;
-      height: 10px;
-      background: red;
-      border-radius: 50%;
-      position: absolute;
-      top: -8px;
-      left: 5px;
-    }
+.comb {
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  left: 8px;
+  border: 1px solid #000;
+}
 
-    .eye {
-      width: 5px;
-      height: 5px;
-      background: black;
-      border-radius: 50%;
-      position: absolute;
-      top: 8px;
-      left: 8px;
-    }
+.eye {
+  width: 5px;
+  height: 5px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
 
-    .tail {
-      width: 20px;
-      height: 20px;
-      background: green;
-      border-radius: 50%;
-      position: absolute;
-      bottom: 20px;
-      right: -10px;
-    }
+.tail {
+  width: 20px;
+  height: 20px;
+  background: green;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 25px;
+  right: -10px;
+  border: 1px solid #000;
+}
+
   </style>
 </head>
 <body>
@@ -222,17 +231,19 @@
     </div>
 
     <!-- Gallo animado -->
-    <div class="rooster-container">
-      <div class="rooster">
-        <div class="body"></div>
-        <div class="head">
-          <div class="beak"></div>
-          <div class="comb"></div>
-          <div class="eye"></div>
-        </div>
-        <div class="tail"></div>
-      </div>
+    <!-- Gallo animado -->
+<div class="rooster-container">
+  <div class="rooster">
+    <div class="body"></div>
+    <div class="head">
+      <div class="beak"></div>
+      <div class="comb"></div>
+      <div class="eye"></div>
     </div>
+    <div class="tail"></div>
+  </div>
+</div>
+
 
     <footer>Con cariño eterno 💌</footer>
   </div>
