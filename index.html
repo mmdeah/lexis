@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Para Lexas Zoé 💖</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Parisienne&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -54,10 +54,24 @@
     }
 
     .poem {
-      font-size: 1.2em;
+      font-family: 'Parisienne', cursive; /* Nueva fuente para el poema */
+      font-size: 1.5em; /* Aumentar tamaño para mejor lectura con la nueva fuente */
       line-height: 1.8;
       margin: 30px 0;
       color: #fff;
+      min-height: 150px; /* Para asegurar espacio mientras se escribe */
+      white-space: pre-wrap; /* Para mantener los saltos de línea */
+      text-align: center;
+    }
+
+    .poem.typing::after {
+      content: '|'; /* Cursor */
+      animation: blink-caret .75s step-end infinite;
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: white; }
     }
 
     footer {
@@ -73,17 +87,19 @@
       height: 150px;
     }
 
-    .love-animation .heart {
+    .love-animation .heart-float { /* Cambiado a heart-float para evitar conflicto */
       position: absolute;
       width: 30px;
       height: 30px;
       background: red;
       transform: rotate(-45deg);
       animation: bounce 2s infinite ease-in-out;
+      opacity: 0.8;
+      border-radius: 5px; /* Pequeño redondeo para suavizar */
     }
 
-    .love-animation .heart::before,
-    .love-animation .heart::after {
+    .love-animation .heart-float::before,
+    .love-animation .heart-float::after {
       content: '';
       position: absolute;
       width: 30px;
@@ -92,21 +108,21 @@
       border-radius: 50%;
     }
 
-    .love-animation .heart::before {
+    .love-animation .heart-float::before {
       top: -15px;
       left: 0;
     }
 
-    .love-animation .heart::after {
+    .love-animation .heart-float::after {
       left: 15px;
       top: 0;
     }
 
-    .love-animation .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-    .love-animation .heart:nth-child(2) { left: 30%; animation-delay: 0.3s; }
-    .love-animation .heart:nth-child(3) { left: 50%; animation-delay: 0.6s; }
-    .love-animation .heart:nth-child(4) { left: 70%; animation-delay: 0.9s; }
-    .love-animation .heart:nth-child(5) { left: 85%; animation-delay: 1.2s; }
+    .love-animation .heart-float:nth-child(1) { left: 10%; animation-delay: 0s; transform: scale(0.9) rotate(-45deg); }
+    .love-animation .heart-float:nth-child(2) { left: 30%; animation-delay: 0.3s; transform: scale(1.1) rotate(-45deg); }
+    .love-animation .heart-float:nth-child(3) { left: 50%; animation-delay: 0.6s; transform: scale(1.0) rotate(-45deg); }
+    .love-animation .heart-float:nth-child(4) { left: 70%; animation-delay: 0.9s; transform: scale(0.8) rotate(-45deg); }
+    .love-animation .heart-float:nth-child(5) { left: 85%; animation-delay: 1.2s; transform: scale(1.2) rotate(-45deg); }
 
     @keyframes bounce {
       0%, 100% { bottom: 0; transform: scale(1) rotate(-45deg); opacity: 0.8; }
@@ -121,35 +137,41 @@
       overflow: hidden;
       background-color: rgba(255, 255, 255, 0.2);
       border-radius: 20px;
+      display: flex; /* Para centrar el texto */
+      align-items: center; /* Para centrar el texto verticalmente */
+      justify-content: center; /* Para centrar el texto horizontalmente */
     }
 
     .rooster-svg {
-      width: 64px;
-      height: 64px;
+      width: 80px; /* Aumentar tamaño del gallo */
+      height: 80px;
       position: absolute;
       bottom: 10px;
-      left: -70px;
+      left: -90px; /* Ajustar posición inicial */
       cursor: pointer;
       animation: svg-walk 10s linear infinite;
+      transition: transform 0.2s ease-in-out; /* Para un pequeño efecto al hacer click */
+    }
+
+    .rooster-svg:active {
+      transform: scale(0.95);
     }
 
     @keyframes svg-walk {
-      0% { left: -70px; }
-      100% { left: 100%; }
+      0% { left: -90px; }
+      100% { left: calc(100% + 90px); } /* Asegurar que se salga completamente */
     }
 
     /* Texto flotante */
     .kikiriki-text {
       position: absolute;
-      font-size: 1.5em;
+      font-size: 1.8em; /* Tamaño de fuente aumentado */
       font-weight: bold;
       color: #fffc;
-      left: 50%;
-      top: 40%;
-      transform: translate(-50%, -50%);
       opacity: 0;
       pointer-events: none;
       animation: none;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para el texto */
     }
 
     .kikiriki-text.show {
@@ -157,16 +179,16 @@
     }
 
     @keyframes flyUp {
-      0% { opacity: 1; transform: translate(-50%, 0); }
-      100% { opacity: 0; transform: translate(-50%, -60px); }
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-60px); }
     }
 
     /* Pétalos de rosa */
     .petal {
       position: fixed;
-      top: -10px;
-      width: 20px;
-      height: 20px;
+      top: -20px; /* Ajustar para que inicie más arriba */
+      width: 25px; /* Un poco más grandes */
+      height: 25px;
       background: url('https://upload.wikimedia.org/wikipedia/commons/3/3c/Rose_Petal.png') no-repeat center/contain;
       pointer-events: none;
       opacity: 0.8;
@@ -176,11 +198,11 @@
 
     @keyframes fall {
       0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) rotate(0deg) scale(1);
         opacity: 1;
       }
       100% {
-        transform: translateY(100vh) rotate(360deg);
+        transform: translateY(105vh) rotate(720deg) scale(0.5); /* Más rotación y se encogen */
         opacity: 0;
       }
     }
@@ -192,37 +214,24 @@
     <h1>Para Lexas Zoé</h1>
     <div class="heart">💗</div>
 
-    <div class="poem">
-      Eres la luz en mis días más grises,<br>
-      mi paz en medio del ruido,<br>
-      tus ojos son como dos amaneceres<br>
-      que me enseñan que el amor ha nacido.<br><br>
+    <div class="poem" id="poem-text"></div>
 
-      Lexas Zoé, tu nombre es poesía,<br>
-      cada letra una melodía,<br>
-      y en este rincón del mundo digital,<br>
-      te escribo mi amor inmortal.
-    </div>
-
-    <!-- Corazones animados -->
     <div class="love-animation">
-      <div class="heart"></div>
-      <div class="heart"></div>
-      <div class="heart"></div>
-      <div class="heart"></div>
-      <div class="heart"></div>
+      <div class="heart-float"></div>
+      <div class="heart-float"></div>
+      <div class="heart-float"></div>
+      <div class="heart-float"></div>
+      <div class="heart-float"></div>
     </div>
 
-    <!-- Gallo SVG animado -->
     <div class="rooster-svg-container">
       <svg viewBox="0 0 64 64" class="rooster-svg">
-        <path fill="#d2691e" d="M32 12c-4 0-8 3-8 7 0 2 1 4 3 5-1 0-3 2-3 4 0 2 2 4 4 4s3-1 3-1 1 1 3 1 4-2 4-4c0-2-2-4-3-4 2-1 3-3 3-5 0-4-4-7-8-7z"/>
-        <circle cx="35" cy="10" r="3" fill="red" />
-        <circle cx="29" cy="10" r="3" fill="red" />
-        <circle cx="32" cy="8" r="3" fill="red" />
-        <circle cx="32" cy="19" r="2" fill="black"/>
-        <polygon points="36,19 40,21 36,23" fill="orange"/>
-        <path fill="green" d="M24 30c-5 4-10 10-5 18 3 5 12 5 17 2 6-4 6-12 3-18l-2 2c-1 2-3 2-5 2s-4 0-5-2l-3-2z"/>
+        <path fill="#e67e22" d="M32 12c-4 0-8 3-8 7 0 2 1 4 3 5-1 0-3 2-3 4 0 2 2 4 4 4s3-1 3-1 1 1 3 1 4-2 4-4c0-2-2-4-3-4 2-1 3-3 3-5 0-4-4-7-8-7z"/>
+        <circle cx="35" cy="10" r="3" fill="#c0392b" /> <circle cx="29" cy="10" r="3" fill="#c0392b" />
+        <circle cx="32" cy="8" r="3" fill="#c0392b" />
+        <circle cx="32" cy="19" r="2.5" fill="black"/> <polygon points="36,19 40,21 36,23" fill="#f39c12"/> <path fill="#27ae60" d="M24 30c-5 4-10 10-5 18 3 5 12 5 17 2 6-4 6-12 3-18l-2 2c-1 2-3 2-5 2s-4 0-5-2l-3-2z"/>
+        <path fill="#27ae60" d="M32 30c-5 4-10 10-5 18 3 5 12 5 17 2 6-4 6-12 3-18l-2 2c-1 2-3 2-5 2s-4 0-5-2l-3-2z"/>
+        <path fill="#27ae60" d="M40 30c-5 4-10 10-5 18 3 5 12 5 17 2 6-4 6-12 3-18l-2 2c-1 2-3 2-5 2s-4 0-5-2l-3-2z"/>
       </svg>
       <div class="kikiriki-text" id="kikirikiText">¡Kikirikí para Lexas!</div>
     </div>
@@ -230,20 +239,42 @@
     <footer>Con cariño eterno 💌</footer>
   </div>
 
-  <!-- Audio del kikirikí -->
   <audio id="roosterSound" src="https://www.soundjay.com/animal/rooster-2.mp3"></audio>
 
-  <!-- Script para sonido, texto y pétalos -->
   <script>
     const rooster = document.querySelector('.rooster-svg');
     const sound = document.getElementById('roosterSound');
     const text = document.getElementById('kikirikiText');
+    const poemText = document.getElementById('poem-text');
+
+    const poemContent = `
+      Eres la luz en mis días más grises,
+      mi paz en medio del ruido,
+      tus ojos son como dos amaneceres
+      que me enseñan que el amor ha nacido.
+
+      Lexas Zoé, tu nombre es poesía,
+      cada letra una melodía,
+      y en este rincón del mundo digital,
+      te escribo mi amor inmortal.
+    `;
+
+    let i = 0;
+    function typeWriter() {
+      if (i < poemContent.length) {
+        poemText.innerHTML += poemContent.charAt(i);
+        i++;
+        setTimeout(typeWriter, 70); // Velocidad de escritura, ajusta a tu gusto
+      } else {
+        poemText.classList.remove('typing'); // Elimina el cursor al finalizar
+      }
+    }
 
     rooster.addEventListener('click', () => {
       sound.currentTime = 0;
       sound.play();
       text.classList.remove('show');
-      void text.offsetWidth;
+      void text.offsetWidth; // Truco para reiniciar la animación
       text.classList.add('show');
     });
 
@@ -253,6 +284,7 @@
       petal.classList.add('petal');
       petal.style.left = Math.random() * 100 + "vw";
       petal.style.animationDuration = (5 + Math.random() * 5) + "s";
+      petal.style.opacity = (0.5 + Math.random() * 0.5); // Opacidad aleatoria
       document.body.appendChild(petal);
 
       setTimeout(() => {
@@ -260,7 +292,12 @@
       }, 10000);
     }
 
-    setInterval(createPetal, 500);
+    // Iniciar la animación al cargar la página
+    window.onload = () => {
+      poemText.classList.add('typing');
+      typeWriter();
+      setInterval(createPetal, 600); // Frecuencia de aparición de pétalos
+    };
   </script>
 
 </body>
