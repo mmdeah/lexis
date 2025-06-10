@@ -7,14 +7,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     * {
-      font-family: Times New Roman;
+      font-family: Times New Roman, serif; /* Ajustado para Times New Roman */
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
       padding: 0;
-      font-family: Times New Roman;
+      font-family: Times New Roman, serif; /* Ajustado para Times New Roman */
       background: linear-gradient(to bottom right, #fbd3e9, #bb377d);
       color: #fff;
       min-height: 100vh;
@@ -37,7 +37,7 @@
     }
 
     h1 {
-      font-family: Times New Roman;
+      font-family: 'Great Vibes', cursive; /* Mantener la fuente original para el título */
       font-size: 3em;
       margin-bottom: 10px;
       color: #fffafc;
@@ -45,7 +45,7 @@
 
     .heart {
       font-size: 2em;
-      animation: pulse 1.5s infinite;
+      animation: pulse 1.5s infinite, sparkle 3s infinite 1s; /* Añadida animación sparkle */
     }
 
     @keyframes pulse {
@@ -54,8 +54,14 @@
       100% { transform: scale(1); }
     }
 
+    @keyframes sparkle {
+      0% { text-shadow: none; }
+      50% { text-shadow: 0 0 10px #fff, 0 0 20px #ffccff, 0 0 30px #ff66ff; }
+      100% { text-shadow: none; }
+    }
+
     .poem {
-      font-family: Times New Roman; /* Cambiado a Times New Roman */
+      font-family: Times New Roman, serif; /* Cambiado a Times New Roman */
       font-size: 1.5em;
       line-height: 1.8;
       margin: 30px 0;
@@ -81,7 +87,7 @@
       color: #ffeaf6;
     }
 
-    /* Corazones animados */
+    /* Corazones animados flotantes (los 5 que rebotan) */
     .love-animation {
       margin-top: 40px;
       position: relative;
@@ -207,6 +213,52 @@
         opacity: 0;
       }
     }
+
+    /* Corazones que caen */
+    .falling-heart {
+      position: fixed;
+      top: -50px; /* Iniciar fuera de la pantalla */
+      width: 30px;
+      height: 30px;
+      background: red;
+      transform: rotate(-45deg);
+      opacity: 0.7;
+      border-radius: 5px;
+      z-index: 0;
+      pointer-events: none;
+      animation: heart-fall 6s linear infinite; /* Nueva animación */
+    }
+
+    .falling-heart::before,
+    .falling-heart::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .falling-heart::before {
+      top: -15px;
+      left: 0;
+    }
+
+    .falling-heart::after {
+      left: 15px;
+      top: 0;
+    }
+
+    @keyframes heart-fall {
+      0% {
+        transform: translateY(0) rotate(-45deg) scale(1);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(110vh) rotate(-225deg) scale(0.6);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -268,7 +320,7 @@
       if (i < poemContent.length) {
         poemText.innerHTML += poemContent.charAt(i);
         i++;
-        setTimeout(typeWriter, 20); // Velocidad de escritura más rápida (antes 70)
+        setTimeout(typeWriter, 20); // Velocidad de escritura
       } else {
         poemText.classList.remove('typing');
       }
@@ -295,10 +347,26 @@
       }, 10000);
     }
 
+    // Crear corazones que caen aleatoriamente
+    function createFallingHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('falling-heart');
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 4) + "s"; // Variar la velocidad
+      heart.style.opacity = (0.5 + Math.random() * 0.4); // Variar la opacidad
+      heart.style.transform = `scale(${0.7 + Math.random() * 0.4}) rotate(-45deg)`; // Variar el tamaño inicial
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000); // Tiempo de vida del corazón (ajustar según la duración de la animación)
+    }
+
     window.onload = () => {
       poemText.classList.add('typing');
       typeWriter();
-      setInterval(createPetal, 600);
+      setInterval(createPetal, 600); // Frecuencia de aparición de pétalos
+      setInterval(createFallingHeart, 400); // Frecuencia de aparición de los corazones
     };
   </script>
 
