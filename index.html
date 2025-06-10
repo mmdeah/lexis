@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Para Lexas Zoé 💖</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Parisienne&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -54,13 +54,13 @@
     }
 
     .poem {
-      font-family: 'Parisienne', cursive; /* Nueva fuente para el poema */
-      font-size: 1.5em; /* Aumentar tamaño para mejor lectura con la nueva fuente */
+      font-family: 'Times New Roman', serif; /* Cambiado a Times New Roman */
+      font-size: 1.5em;
       line-height: 1.8;
       margin: 30px 0;
       color: #fff;
-      min-height: 150px; /* Para asegurar espacio mientras se escribe */
-      white-space: pre-wrap; /* Para mantener los saltos de línea */
+      min-height: 150px;
+      white-space: pre-wrap;
       text-align: center;
     }
 
@@ -87,7 +87,7 @@
       height: 150px;
     }
 
-    .love-animation .heart-float { /* Cambiado a heart-float para evitar conflicto */
+    .love-animation .heart-float {
       position: absolute;
       width: 30px;
       height: 30px;
@@ -95,7 +95,7 @@
       transform: rotate(-45deg);
       animation: bounce 2s infinite ease-in-out;
       opacity: 0.8;
-      border-radius: 5px; /* Pequeño redondeo para suavizar */
+      border-radius: 5px;
     }
 
     .love-animation .heart-float::before,
@@ -137,20 +137,20 @@
       overflow: hidden;
       background-color: rgba(255, 255, 255, 0.2);
       border-radius: 20px;
-      display: flex; /* Para centrar el texto */
-      align-items: center; /* Para centrar el texto verticalmente */
-      justify-content: center; /* Para centrar el texto horizontalmente */
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .rooster-svg {
-      width: 80px; /* Aumentar tamaño del gallo */
+      width: 80px;
       height: 80px;
       position: absolute;
       bottom: 10px;
-      left: -90px; /* Ajustar posición inicial */
+      left: -90px;
       cursor: pointer;
       animation: svg-walk 10s linear infinite;
-      transition: transform 0.2s ease-in-out; /* Para un pequeño efecto al hacer click */
+      transition: transform 0.2s ease-in-out;
     }
 
     .rooster-svg:active {
@@ -159,19 +159,19 @@
 
     @keyframes svg-walk {
       0% { left: -90px; }
-      100% { left: calc(100% + 90px); } /* Asegurar que se salga completamente */
+      100% { left: calc(100% + 90px); }
     }
 
     /* Texto flotante */
     .kikiriki-text {
       position: absolute;
-      font-size: 1.8em; /* Tamaño de fuente aumentado */
+      font-size: 1.8em;
       font-weight: bold;
       color: #fffc;
       opacity: 0;
       pointer-events: none;
       animation: none;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para el texto */
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 
     .kikiriki-text.show {
@@ -186,8 +186,8 @@
     /* Pétalos de rosa */
     .petal {
       position: fixed;
-      top: -20px; /* Ajustar para que inicie más arriba */
-      width: 25px; /* Un poco más grandes */
+      top: -20px;
+      width: 25px;
       height: 25px;
       background: url('https://upload.wikimedia.org/wikipedia/commons/3/3c/Rose_Petal.png') no-repeat center/contain;
       pointer-events: none;
@@ -202,7 +202,7 @@
         opacity: 1;
       }
       100% {
-        transform: translateY(105vh) rotate(720deg) scale(0.5); /* Más rotación y se encogen */
+        transform: translateY(105vh) rotate(720deg) scale(0.5);
         opacity: 0;
       }
     }
@@ -227,9 +227,12 @@
     <div class="rooster-svg-container">
       <svg viewBox="0 0 64 64" class="rooster-svg">
         <path fill="#e67e22" d="M32 12c-4 0-8 3-8 7 0 2 1 4 3 5-1 0-3 2-3 4 0 2 2 4 4 4s3-1 3-1 1 1 3 1 4-2 4-4c0-2-2-4-3-4 2-1 3-3 3-5 0-4-4-7-8-7z"/>
-        <circle cx="35" cy="10" r="3" fill="#c0392b" /> <circle cx="29" cy="10" r="3" fill="#c0392b" />
+        <circle cx="35" cy="10" r="3" fill="#c0392b" />
+        <circle cx="29" cy="10" r="3" fill="#c0392b" />
         <circle cx="32" cy="8" r="3" fill="#c0392b" />
-        <circle cx="32" cy="19" r="2.5" fill="black"/> <polygon points="36,19 40,21 36,23" fill="#f39c12"/> <path fill="#27ae60" d="M24 30c-5 4-10 10-5 18 3 5 12 5 17 2 6-4 6-12 3-18l-2 2c-1 2-3 2-5 2s-4 0-5-2l-3-2z"/>
+        <circle cx="32" cy="19" r="2.5" fill="black"/>
+        <polygon points="36,19 40,21 36,23" fill="#f39c12"/>
+        <path fill="#27ae60" d="M24 30c-5 4-10 10-5 18 3 5 12 5 17 2 6-4 6-12 3-18l-2 2c-1 2-3 2-5 2s-4 0-5-2l-3-2z"/>
         <path fill="#27ae60" d="M32 30c-5 4-10 10-5 18 3 5 12 5 17 2 6-4 6-12 3-18l-2 2c-1 2-3 2-5 2s-4 0-5-2l-3-2z"/>
         <path fill="#27ae60" d="M40 30c-5 4-10 10-5 18 3 5 12 5 17 2 6-4 6-12 3-18l-2 2c-1 2-3 2-5 2s-4 0-5-2l-3-2z"/>
       </svg>
@@ -264,9 +267,9 @@
       if (i < poemContent.length) {
         poemText.innerHTML += poemContent.charAt(i);
         i++;
-        setTimeout(typeWriter, 70); // Velocidad de escritura, ajusta a tu gusto
+        setTimeout(typeWriter, 20); // Velocidad de escritura más rápida (antes 70)
       } else {
-        poemText.classList.remove('typing'); // Elimina el cursor al finalizar
+        poemText.classList.remove('typing');
       }
     }
 
@@ -274,17 +277,16 @@
       sound.currentTime = 0;
       sound.play();
       text.classList.remove('show');
-      void text.offsetWidth; // Truco para reiniciar la animación
+      void text.offsetWidth;
       text.classList.add('show');
     });
 
-    // Crear pétalos aleatorios
     function createPetal() {
       const petal = document.createElement('div');
       petal.classList.add('petal');
       petal.style.left = Math.random() * 100 + "vw";
       petal.style.animationDuration = (5 + Math.random() * 5) + "s";
-      petal.style.opacity = (0.5 + Math.random() * 0.5); // Opacidad aleatoria
+      petal.style.opacity = (0.5 + Math.random() * 0.5);
       document.body.appendChild(petal);
 
       setTimeout(() => {
@@ -292,11 +294,10 @@
       }, 10000);
     }
 
-    // Iniciar la animación al cargar la página
     window.onload = () => {
       poemText.classList.add('typing');
       typeWriter();
-      setInterval(createPetal, 600); // Frecuencia de aparición de pétalos
+      setInterval(createPetal, 600);
     };
   </script>
 
